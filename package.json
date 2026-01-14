@@ -1,0 +1,4 @@
+{
+"packageManager": "npm@10.8.2",
+  "workspaces": ["server", "webapp"]
+}
