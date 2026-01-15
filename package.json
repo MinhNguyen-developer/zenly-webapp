@@ -1,4 +1,16 @@
 {
-"packageManager": "npm@10.8.2",
-  "workspaces": ["server", "webapp"]
+  "name": "zenly-webapp",
+  "version": "1.0.0",
+  "description": "Friend location sharing web application",
+  "author": {
+    "name": "Minh Nguyen"
+  },
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "server",
+    "webapp"
+  ],
+  "devDependencies": {
+    "prettier": "^3.8.0"
+  }
 }
