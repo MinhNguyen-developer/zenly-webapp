@@ -1,0 +1,9 @@
+# Add .env file to .gitignore
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Docker volumes
+postgres_data/
+

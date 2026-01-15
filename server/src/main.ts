@@ -9,11 +9,20 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: configService.get('CORS_ORIGIN') || 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
     credentials: true,
   });
 
-  // Enable validation pipes globally
+  // Health check endpoint
+  app.getHttpAdapter().get('/health', (req, res) => {
+    res.status(200).json({
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      service: 'zenly-backend',
+    });
+  });
+
+  const port = process.env.PORT || 3001;
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -25,7 +34,6 @@ async function bootstrap() {
   // Set global prefix
   app.setGlobalPrefix('api');
 
-  const port = configService.get('PORT') || 3001;
   await app.listen(port);
   console.log(`🚀 Server is running on: http://localhost:${port}`);
   console.log(`📍 API available at: http://localhost:${port}/api`);
